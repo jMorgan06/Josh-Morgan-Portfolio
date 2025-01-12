@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio - Josh Morgan</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/9fd4bdfe40.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="/Images/logo6.png" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="#" onclick="closemenu()">Home</a></li>
+                    <li><a href="#portfolio" onclick="closemenu()">Portfolio</a></li>
+                    <li><a href="#services" onclick="closemenu()">Services</a></li>
+                    <li><a href="#about" onclick="closemenu()">About</a></li>
+                    <li><a href="#contact" onclick="closemenu()">Contact Me</a></li>
+                    <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            </nav>
+            <div class="header-text">
+                <video autoplay loop muted plays-inline class="back-video">
+                    <source src="Images/Julietta Video.mp4" type="video/mp4">
+                </video>
+                <p>Josh Morgan</p>
+                <h1>3D <span>Vehicle</span> Artist</h1>
+            </div>
+        </div>
+    </div>
+
+<!-- Portfolio Section (Images)-->
+<div id="portfolio">
+    <div class="container">
+        <h1 class="sub-title">My Portfolio</h1>
+        <div class="work-list">
+            <!-- Portfolio items -->
+            <div class="work">
+                <img src="images/Sunset.png" data-index="0">
+                <div class="layer">
+                    <h3>H6 - Julietta</h3>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/Car Render View Front.png" data-index="1">
+                <div class="layer">
+                    <h3>H6 - Julietta</h3>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/Car Render View Back.png" data-index="2">
+                <div class="layer">
+                    <h3>H6 - Julietta</h3>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/Front View Closeup.png" data-index="3">
+                <div class="layer">
+                    <h3>H6 - Julietta</h3>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/Side View Closeup.png" data-index="4">
+                <div class="layer">
+                    <h3>H6 - Julietta</h3>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/12.png" data-index="5">
+                <div class="layer">
+                    <h3>Mustang Wheel Rim</h3>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/9.png" data-index="6">
+                <div class="layer">
+                    <h3>Mustang Wheel Rim</h3>
+                </div>
+            </div>
+            <div class="work">
+                <img src="Images/McLaren 2.png" data-index="7">
+                <div class="layer">
+                    <h3>Concept Bike</h3>
+                </div>
+            </div>
+            <div class="work">
+                <img src="Images/McLaren 3.png" data-index="8">
+                <div class="layer">
+                    <h3>Concept Bike</h3>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/Bike_2.png" data-index="9">
+                <div class="layer">
+                    <h3>Concept Bike</h3>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/Bike_3.png" data-index="10">
+                <div class="layer">
+                    <h3>Concept Bike</h3>
+                </div>
+            </div>
+            <!-- Add more items here as needed -->
+        </div>
+    </div>
+</div>
+
+<!-- Portfolio Section (Videos) -->
+<div id="portfolio">
+    <div class="container">
+        <!-- <h1 class="sub-title">My Portfolio</h1> -->
+        <div class="work-list">
+            <!-- Portfolio items -->
+            <div class="work">
+                <video data-index="0" muted autoplay loop>
+                    <source src="Videos/Julietta Phone.mp4" type="video/mp4">
+                </video>
+                <div class="layer">
+                    <h3>H6 Julietta Render</h3>
+                </div>
+            </div>
+            <div class="work">
+                <video data-index="1" muted autoplay loop>
+                    <source src="Videos/Porsche 911 Gt3 Rs IG Video.mp4" type="video/mp4">
+                </video>
+                <div class="layer">
+                    <h3>Porsche 911 Render</h3>
+                </div>
+            </div>
+            <div class="work">
+                <video data-index="2" muted autoplay loop>
+                    <source src="Videos/McLaren P1 Video.mp4" type="video/mp4">
+                </video>
+                <div class="layer">
+                    <h3>McLaren P1 Render</h3>
+                </div>
+            </div>
+            <!-- Add more items here as needed -->
+        </div>
+    </div>
+</div>
+
+<!-- Modal Image Viewer -->
+<div id="imageViewer" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+        <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+        <img id="modalImage" src="" alt="Large view" />
+        <button class="next" onclick="changeImage(1)">&#10095;</button>
+    </div>
+</div>
+
+<!---------services---------->
+
+<div id="services">
+    <div class="container">
+        <h1 class="sub-title">My Services</h1>
+        <div class="services-list">
+            <div class="service-item" data-video="video1.mp4">
+                <video class="background-video" autoplay loop muted>
+                    <source src="Videos/Modelling.mp4" type="video/mp4">
+                </video>
+                <div class="service-elements">
+                    <i class="fa-solid fa-cube"></i>
+                    <h2>3D Modelling</h2>
+                </div>
+            </div>
+            <div class="service-item" data-video="video2.mp4">
+                <video class="background-video" autoplay loop muted>
+                    <source src="Videos/Rigging.mp4" type="video/mp4">
+                </video>
+                <div class="service-elements">
+                    <i class="fa-solid fa-gear"></i>
+                    <h2>Rigging & Animating</h2>
+                </div>
+            </div>
+            <div class="service-item" data-video="video3.mp4">
+                <video class="background-video" autoplay loop muted>
+                    <source src="Videos/Julietta Video.mp4" type="video/mp4">
+                </video>
+                <div class="service-elements">
+                    <i class="fa-solid fa-video"></i>
+                    <h2>Rendering</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ---------about-------- -->
+
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="Images/Untitled-1.jpg">
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title">About Me</h1>
+                    <p><span>Hello I'm Josh,</span><br><br>I really love 3D modelling and animation.
+                        I've dedicated the past 3 years to learning and researching 3D animation. Ever since
+                        I started using Blender I haven't been able to put it down. It has allowed me to
+                        harness my passions for making really cool things, and now I'm building a career out
+                        of it. <br><br><span>I am a <span1>vehicle</span1> artist,</span><br><br>Which means I specialize in modelling mostly 
+                        cars and motorcycles, but I will do other types of vehicles as well. I do both 
+                        exteriors and interiors. I especially love applying materials and lighting as 
+                        that's when I can really start seeing the beauty of my work. I also find setting up 
+                        the environments very pleasing as I love seeing what stories I can tell with 
+                        just the surrounding objects.
+                    </p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>3D Modelling</span><br>Designing Vehicles in 3D</li>
+                            <li><span>Rigging</span><br>Rigging & Animating Vehicles</li>
+                            <li><span>Rendering</span><br>Realistic Materials & Render Services</li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><span>2021 - Current</span><br>Environment Artist at Banana 
+                                Hoshi Studios</li>
+                            <li><span>2024</span><br>Environment & Prop Artist at Full Circle CS</li>
+                            <li><span>2023 - 2024</span><br>Modelling Teaching Assistant at 
+                                Ontario Tech University</li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ---------programs-------- -->
+
+<div id="programs">
+    <div class="container">
+        <div class="row">
+            <h1 class="sub-title">Software I Use</h1>
+            <div class="program-list">
+                <div class="programs">
+                    <img src="Images/Blender_Logo.png" data-="0">
+                </div>
+                <div class="programs">
+                    <img src="Images/Maya_Logo.png" data-="1">
+                </div>
+                <div class="programs">
+                    <img src="Images/Unreal_Logo.png" data-="7">
+                </div>
+                <div class="programs">
+                    <img src="Images/Painter_Logo.png" data-="2">
+                </div>
+                <div class="programs">
+                    <img src="Images/Designer_Logo.png" data-="3">
+                </div>
+                <div class="programs">
+                    <img src="Images/Photoshop_Logo.png" data-="4">
+                </div>
+                <div class="programs">
+                    <img src="Images/Premiere_Logo.png" data-="5">
+                </div>
+                <div class="programs">
+                    <img src="Images/AfterEffects_Logo.png" data-="6">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--------contact-------->
+
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact">
+                <h1 class="sub-title">Contact Me!</h1>
+                <p><i class="fa-solid fa-envelope"></i>JoshMorgan200306@gmail.com</p>
+                <a href="btn"></a>
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="First Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/joshmorgan06/"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/josh-morgan-b00447233/"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.artstation.com/joshmorgan3"><i class="fa-brands fa-artstation"></i></a>
+        </div>
+    </div>
+</div>
+
+<script>
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+</script>
+
+<script>
+    var sidemenu = document.getElementById("sidemenu");
+
+    function openmenu(){
+        sidemenu.style.right = "0";
+    }
+
+    function closemenu(){
+        sidemenu.style.right = "-200px";
+    }
+</script>
+
+<script>
+window.addEventListener('scroll', function() {
+    var video = document.querySelector('.back-video'); // Get the .back-video element
+    var scrollPosition = window.scrollY; // Get the scroll position
+    var windowHeight = window.innerHeight; // Get the viewport height
+    var documentHeight = document.documentElement.scrollHeight; // Get the total document height
+
+    // Calculate the percentage of how far you've scrolled down
+    var scrollPercentage = scrollPosition / (documentHeight - windowHeight);
+
+    // Set the opacity: as you scroll down, opacity will decrease to 0
+    video.style.opacity = 1 - (scrollPercentage * 3.5); // Opacity decreases as you scroll down
+});
+
+</script>
+
+<script>
+    // Set the scroll threshold (in pixels)
+const scrollThreshold = 500; // Change this value to your desired threshold
+
+// Get the nav element
+const nav = document.querySelector('nav');
+
+// Listen for the scroll event
+window.addEventListener('scroll', () => {
+    // Check if the page has been scrolled beyond the threshold
+    if (window.scrollY > scrollThreshold) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
+
+</script>
+
+<script>
+    // Store all images in an array
+const portfolioImages = [
+    "images/Sunset.png",
+    "images/Car Render View Front.png",
+    "images/Car Render View Back.png",
+    "images/Front View Closeup.png",
+    "images/Side View Closeup.png",
+    "images/12.png",
+    "images/9.png",
+    "images/McLaren 2.png",
+    "images/McLaren 3.png",
+    "images/Bike_2.png",
+    "images/Bike_3.png", // Add more image paths as needed
+];
+
+let currentIndex = -1;  // Track the index of the current image
+
+// Function to open the modal
+function openModal(index) {
+    currentIndex = index; // Set the current image index
+    const modal = document.getElementById('imageViewer');
+    const modalImage = document.getElementById('modalImage');
+    modal.style.display = 'block';
+    modalImage.src = portfolioImages[currentIndex]; // Set the image in modal
+}
+
+// Function to close the modal
+function closeModal() {
+    const modal = document.getElementById('imageViewer');
+    modal.style.display = 'none';
+}
+
+// Function to change image (navigate left or right)
+function changeImage(direction) {
+    currentIndex += direction;
+    if (currentIndex < 0) {
+        currentIndex = portfolioImages.length - 1;  // Loop to the last image
+    } else if (currentIndex >= portfolioImages.length) {
+        currentIndex = 0;  // Loop to the first image
+    }
+    document.getElementById('modalImage').src = portfolioImages[currentIndex];
+}
+
+// Attach click event to portfolio images
+document.querySelectorAll('.work img').forEach((image, index) => {
+    image.addEventListener('click', () => openModal(index));
+});
+</script>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxXGnqOhbooKFD4TO7-kq0emLL8SIOBaNJyYdznyUAthyPHW3RYQk1kWYxPzVbpcr-g/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById('msg')
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Submitted. Thank you!"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+  <script>
+        // Function to change video source based on screen size
+        function updateVideoSource() {
+        var video = document.querySelector('.back-video');
+        var source = video.querySelector('source');
+
+        // Check if the screen width is less than 768px (phone size)
+        if (window.innerWidth <= 768) {
+            // Change the video source for mobile size
+            source.src = 'Videos/Julietta Phone.mp4'; // Path to the mobile video
+        } else {
+            // Use the desktop video source for larger screens
+            source.src = 'Videos/Julietta Video.mp4'; // Path to the desktop video
+        }
+
+        // Reload the video to apply the new source
+        video.load();
+        }
+
+    // Run the function on window resize and initial load
+    window.addEventListener('resize', updateVideoSource);
+    window.addEventListener('load', updateVideoSource);
+
+  </script>
+  
+</body>
+</html>
