@@ -39,43 +39,43 @@
         <div class="work-list">
             <!-- Portfolio items -->
             <div class="work">
-                <img src="images/Sunset.webp" data-index="0">
+                <img src="Images/Sunset.webp" data-index="0">
                 <div class="layer">
                     <h3>H6 - Julietta</h3>
                 </div>
             </div>
             <div class="work">
-                <img src="images/Car Render View Front.webp" data-index="1">
+                <img src="Images/Car Render View Front.webp" data-index="1">
                 <div class="layer">
                     <h3>H6 - Julietta</h3>
                 </div>
             </div>
             <div class="work">
-                <img src="images/Car Render View Back.webp" data-index="2">
+                <img src="Images/Car Render View Back.webp" data-index="2">
                 <div class="layer">
                     <h3>H6 - Julietta</h3>
                 </div>
             </div>
             <div class="work">
-                <img src="images/Front View Closeup.webp" data-index="3">
+                <img src="Images/Front View Closeup.webp" data-index="3">
                 <div class="layer">
                     <h3>H6 - Julietta</h3>
                 </div>
             </div>
             <div class="work">
-                <img src="images/Side View Closeup.webp" data-index="4">
+                <img src="Images/Side View Closeup.webp" data-index="4">
                 <div class="layer">
                     <h3>H6 - Julietta</h3>
                 </div>
             </div>
             <div class="work">
-                <img src="images/12.webp" data-index="5">
+                <img src="Images/12.webp" data-index="5">
                 <div class="layer">
                     <h3>Mustang Wheel Rim</h3>
                 </div>
             </div>
             <div class="work">
-                <img src="images/9.webp" data-index="6">
+                <img src="Images/9.webp" data-index="6">
                 <div class="layer">
                     <h3>Mustang Wheel Rim</h3>
                 </div>
@@ -93,13 +93,13 @@
                 </div>
             </div>
             <div class="work">
-                <img src="images/Bike_2.webp" data-index="9">
+                <img src="Images/Bike_2.webp" data-index="9">
                 <div class="layer">
                     <h3>Concept Bike</h3>
                 </div>
             </div>
             <div class="work">
-                <img src="images/Bike_3.webp" data-index="10">
+                <img src="Images/Bike_3.webp" data-index="10">
                 <div class="layer">
                     <h3>Concept Bike</h3>
                 </div>
@@ -366,18 +366,18 @@ window.addEventListener('scroll', () => {
 
 <script>
     // Store all images in an array
-const portfolioImages = [
-    "images/Sunset.webp",
-    "images/Car Render View Front.webp",
-    "images/Car Render View Back.webp",
-    "images/Front View Closeup.webp",
-    "images/Side View Closeup.webp",
-    "images/12.webp",
-    "images/9.webp",
-    "images/McLaren 2.webp",
-    "images/McLaren 3.webp",
-    "images/Bike_2.webp",
-    "images/Bike_3.webp", // Add more image paths as needed
+const portfolioimages = [
+    "Images/Sunset.webp",
+    "Images/Car Render View Front.webp",
+    "Images/Car Render View Back.webp",
+    "Images/Front View Closeup.webp",
+    "Images/Side View Closeup.webp",
+    "Images/12.webp",
+    "Images/9.webp",
+    "Images/McLaren 2.webp",
+    "Images/McLaren 3.webp",
+    "Images/Bike_2.webp",
+    "Images/Bike_3.webp", // Add more image paths as needed
 ];
 
 let currentIndex = -1;  // Track the index of the current image
@@ -388,7 +388,7 @@ function openModal(index) {
     const modal = document.getElementById('imageViewer');
     const modalImage = document.getElementById('modalImage');
     modal.style.display = 'block';
-    modalImage.src = portfolioImages[currentIndex]; // Set the image in modal
+    modalImage.src = portfolioimages[currentIndex]; // Set the image in modal
 }
 
 // Function to close the modal
