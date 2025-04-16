@@ -274,7 +274,7 @@ nav ul li a:hover::after{
 }
 
 .videoModal {
-    display: none;
+    display:none;
     position: fixed;
     z-index: 3000;
     left: 0;
@@ -286,13 +286,13 @@ nav ul li a:hover::after{
 }
 
 .video-modal-content {
-    display: inline-block;
-    max-width: 90vw;
-    max-height: 90vh;
-    margin: auto;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 75%;
+    margin: 0 auto;
+    gap: 20px; /* Space between video and text */
 }
 
 #modalImage {
@@ -344,6 +344,60 @@ span.close {
 
 span.close:hover, span.close:focus {
     color: var(--highlight-color);
+}
+
+/* Video container (respects aspect ratio) */
+.video-modal-content-container {
+    flex: 0 0 auto;          /* Don't grow/shrink */
+    max-width: 100%;
+    max-height: 100%;
+    width: 50%;
+    height: 90%;
+    display: flex;
+    align-items: center;   
+    justify-content: center;       /* Video takes up to 70% of modal */
+  }
+
+.modal-video {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+video::-webkit-media-controls {
+    width: 100%; 
+    max-width: 100%; /* Prevent overflow */
+}
+
+.modal-description-all {
+    flex: 1; /* Takes remaining space */
+    overflow-y: auto; /* Scroll if text is long */
+    max-height: 80vh;
+    color: var(--background-color);
+    align-self: center;
+}
+
+.modal-title {
+    font-size: 60px;
+    color: var(--background-color);
+    margin-bottom: 15px;
+}
+
+.responsible-label {
+    font-size: 24px;
+    color: var(--highlight-color);
+    margin-bottom: 5px;
+    margin-top: 50px;
+}
+
+.modal-description {
+    font-size: 20px;
+    color: var(--background-color);
+    line-height: 1.5;
+    margin-top: 0px;
 }
 
 /* ------------services--------- */

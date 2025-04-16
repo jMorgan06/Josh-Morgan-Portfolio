@@ -187,7 +187,17 @@
 <!-- Modal Video Viewer -->
 <div id="videoViewer" class="videoModal" style="display: none;">
     <span class="close" onclick="closeVideoModal()">&times;</span>
-    <video id="modalVideo" controls class="video-modal-content"></video>
+    <div class="video-modal-content">
+        <div class="video-modal-content-container">
+            <video id="modalVideo" controls class="modal-video"></video>
+        </div>
+
+        <div class="modal-description-all">
+            <h2 id="modalTitle" class="modal-title"></h2>
+            <p class="responsible-label">Responsible for:</p>
+            <p id="modalDescription" class="modal-description"></p>
+        </div>
+    </div>
     <button class="prev" onclick="changeVideo(-1)">&#10094;</button>
     <button class="next" onclick="changeVideo(1)">&#10095;</button>
 </div>
@@ -456,12 +466,42 @@ document.querySelectorAll('.work img').forEach((image, index) => {
 <script>
     // Store all videos in an array (replace with your video paths)
     const portfolioVideos = [
-        { src: "Videos/Julietta Phone.webm"},
-        { src: "Videos/Porsche 911 Gt3 Rs IG Video.webm"},
-        { src: "Videos/McLaren P1 Video.webm"},
-        { src: "Videos/Cadillac Video.webm"},
-        { src: "Videos/Studio Garage Video.webm"},
-        { src: "Videos/Pitch Promo Video IG.webm"},
+        { 
+            src: "Videos/Julietta Video.webm", 
+            title: "H6 Julietta", 
+            description: "Model, Textures, Lighting, Animation"
+        },
+
+        { 
+            src: "Videos/Porsche 911 Gt3 Rs IG Video.webm", 
+            title: "Porsche 911 Gt3 Rs", 
+            description: "Lighting, Animation"
+        },
+
+        { 
+            src: "Videos/McLaren P1 Video.webm", 
+            title: "McLaren P1", 
+            description: "Model, Textures, Lighting, Animation"
+        },
+
+        { 
+            src: "Videos/Cadillac Video.webm", 
+            title: "Farm Cadillac", 
+            description: "Lighting, Animation"
+        },
+
+        { 
+            src: "Videos/Studio Garage Video.webm", 
+            title: "Studio Garage", 
+            description: "Models, Environment, Textures, Lighting, Animation"
+        },
+
+        { 
+            src: "Videos/Pitch Promo Video.webm", 
+            title: "Showcase Reel", 
+            description: "Logo, H6 Julietta, McLaren P1, Bike, Lighting, Animation, Post Production"
+        },
+
         // Add more videos as needed
     ];
 
@@ -469,38 +509,29 @@ document.querySelectorAll('.work img').forEach((image, index) => {
 
     // Function to open the modal with a video
     function openVideoModal(index) {
-        currentIndex = index;
-        const modal = document.getElementById('videoViewer');
-        const modalVideo = document.getElementById('modalVideo');
-        const videoInfo = portfolioVideos[currentIndex];
+        currentVideoIndex = index;
+    const modal = document.getElementById('videoViewer');
+    const modalVideo = document.getElementById('modalVideo');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const videoInfo = portfolioVideos[currentVideoIndex];
 
-        modal.style.display = 'block';
-        modalVideo.src = videoInfo.src;
-        modalVideo.muted = false;
+    // Set video and text
+    modal.style.display = 'block';
+    modalVideo.src = videoInfo.src;
+    modalVideo.muted = false;
+    modalTitle.textContent = videoInfo.title;
+    modalDescription.textContent = videoInfo.description;
 
-        // Wait for video metadata to load (to get native resolution)
-        modalVideo.onloadedmetadata = function() {
-            // Set modal size to video's intrinsic dimensions (with max bounds for viewport)
-            const maxWidth = window.innerWidth * 0.9;
-            const maxHeight = window.innerHeight * 0.9;
-            
-            let width = modalVideo.videoWidth;
-            let height = modalVideo.videoHeight;
+    // Dynamic sizing (from previous example)
+    modalVideo.onloadedmetadata = function() {
+        const maxWidth = window.innerWidth * 0.7; // 70% of screen (video only)
+        const maxHeight = window.innerHeight * 0.9;
+        // ... (rest of sizing logic)
+    };
 
-            // Scale down if video exceeds viewport bounds
-            if (width > maxWidth || height > maxHeight) {
-                const ratio = Math.min(maxWidth / width, maxHeight / height);
-                width *= ratio;
-                height *= ratio;
-            }
-
-            modalVideo.style.width = `${width}px`;
-            modalVideo.style.height = `${height}px`;
-        };
-
-        modalVideo.play();
-
-    }
+    modalVideo.play();
+}
 
     // Function to close the modal
     function closeVideoModal() {
@@ -514,27 +545,32 @@ document.querySelectorAll('.work img').forEach((image, index) => {
 
     // Function to change video (navigate left or right)
     function changeVideo(direction) {
-        const modalVideo = document.getElementById('modalVideo');
-        
-        // Pause current video before switching
-        modalVideo.pause();
-        modalVideo.currentTime = 0;
+    const modalVideo = document.getElementById('modalVideo');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    
+    // Pause current video
+    modalVideo.pause();
+    modalVideo.currentTime = 0;
 
-        // Update index
-        currentVideoIndex += direction;
-        if (currentVideoIndex < 0) {
-            currentVideoIndex = portfolioVideos.length - 1;  // Loop to last video
-        } else if (currentVideoIndex >= portfolioVideos.length) {
-            currentVideoIndex = 0;  // Loop to first video
-        }
-
-        // Load new video
-        const videoInfo = portfolioVideos[currentVideoIndex];
-        modalVideo.src = videoInfo.src;
-        modalVideo.poster = videoInfo.poster;
-        modalVideo.muted = false;
-        modalVideo.play();
+    // Update index (with looping)
+    currentVideoIndex += direction;
+    if (currentVideoIndex < 0) {
+        currentVideoIndex = portfolioVideos.length - 1; // Loop to end
+    } else if (currentVideoIndex >= portfolioVideos.length) {
+        currentVideoIndex = 0; // Loop to start
     }
+
+    // Load new video and text
+    const videoInfo = portfolioVideos[currentVideoIndex];
+    modalVideo.src = videoInfo.src;
+    modalTitle.textContent = videoInfo.title;
+    modalDescription.textContent = videoInfo.description;
+
+    // Unmute and play
+    modalVideo.muted = false;
+    modalVideo.play();
+}
 
     // Attach click event to portfolio video thumbnails
     document.querySelectorAll('.work video').forEach((video, index) => {
