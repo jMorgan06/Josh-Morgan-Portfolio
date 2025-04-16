@@ -147,19 +147,43 @@
                     <h3>Cadillac Eldorado Biarritz Render</h3>
                 </div>
             </div>
+            <div class="work">
+                <video data-index="4" muted autoplay loop>
+                    <source src="Videos/Studio Garage Video.webm" type="video/webm">
+                </video>
+                <div class="layer">
+                    <h3>Studio Garage Environment</h3>
+                </div>
+            </div>
+            <div class="work">
+                <video data-index="5" muted autoplay loop>
+                    <source src="Videos/Pitch Promo Video IG.webm" type="video/webm">
+                </video>
+                <div class="layer">
+                    <h3>Showcase Reel</h3>
+                </div>
+            </div>
             <!-- Add more items here as needed -->
         </div>
     </div>
 </div>
 
 <!-- Modal Image Viewer -->
-<div id="imageViewer" class="modal">
+<div id="imageViewer" class="imageModal">
     <span class="close" onclick="closeModal()">&times;</span>
-    <div class="modal-content">
+    <div class="image-modal-content">
         <button class="prev" onclick="changeImage(-1)">&#10094;</button>
         <img id="modalImage" src="" alt="Large view" />
         <button class="next" onclick="changeImage(1)">&#10095;</button>
     </div>
+</div>
+
+<!-- Modal Video Viewer -->
+<div id="videoViewer" class="videoModal" style="display: none;">
+    <span class="close" onclick="closeVideoModal()">&times;</span>
+    <video id="modalVideo" controls class="video-modal-content"></video>
+    <button class="prev" onclick="changeVideo(-1)">&#10094;</a>
+    <button class="next" onclick="changeVideo(1)">&#10095;</a>
 </div>
 
 <!---------services---------->
@@ -188,7 +212,7 @@
             </div>
             <div class="service-item" data-video="video3.webm">
                 <video class="background-video" autoplay loop muted>
-                    <source src="Videos/Julietta Video.webm" type="video/webm">
+                    <source src="Videos/Pitch Promo Video.webm" type="video/webm">
                 </video>
                 <div class="service-elements">
                     <i class="fa-solid fa-video"></i>
@@ -302,7 +326,7 @@
         <div class="social-icons">
             <a href="https://www.instagram.com/veadovisuals/"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://www.linkedin.com/in/josh-morgan-b00447233/"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://www.artstation.com/joshmorgan3"><i class="fa-brands fa-artstation"></i></a>
+            <a href="https://jdmorgan.artstation.com/"><i class="fa-brands fa-artstation"></i></a>
         </div>
     </div>
 </div>
@@ -420,6 +444,96 @@ function changeImage(direction) {
 document.querySelectorAll('.work img').forEach((image, index) => {
     image.addEventListener('click', () => openModal(index));
 });
+</script>
+
+<script>
+    // Store all videos in an array (replace with your video paths)
+    const portfolioVideos = [
+        { src: "Videos/Julietta Phone.webm"},
+        { src: "Videos/Porsche 911 Gt3 Rs IG Video.webm"},
+        { src: "Videos/McLaren P1 Video.webm"},
+        { src: "Videos/Cadillac Video.webm"},
+        { src: "Videos/Studio Garage Video.webm"},
+        { src: "Videos/Pitch Promo Video IG.webm"},
+        // Add more videos as needed
+    ];
+
+    let currentVideoIndex = -1;  // Track the index of the current video
+
+    // Function to open the modal with a video
+    function openVideoModal(index) {
+        currentIndex = index;
+        const modal = document.getElementById('videoViewer');
+        const modalVideo = document.getElementById('modalVideo');
+        const videoInfo = portfolioVideos[currentIndex];
+
+        modal.style.display = 'block';
+        modalVideo.src = videoInfo.src;
+        modalVideo.muted = false;
+
+        // Wait for video metadata to load (to get native resolution)
+        modalVideo.onloadedmetadata = function() {
+            // Set modal size to video's intrinsic dimensions (with max bounds for viewport)
+            const maxWidth = window.innerWidth * 0.9;
+            const maxHeight = window.innerHeight * 0.9;
+            
+            let width = modalVideo.videoWidth;
+            let height = modalVideo.videoHeight;
+
+            // Scale down if video exceeds viewport bounds
+            if (width > maxWidth || height > maxHeight) {
+                const ratio = Math.min(maxWidth / width, maxHeight / height);
+                width *= ratio;
+                height *= ratio;
+            }
+
+            modalVideo.style.width = `${width}px`;
+            modalVideo.style.height = `${height}px`;
+        };
+
+        modalVideo.play();
+
+    }
+
+    // Function to close the modal
+    function closeVideoModal() {
+        const modal = document.getElementById('videoViewer');
+        const modalVideo = document.getElementById('modalVideo');
+        
+        modalVideo.pause(); // Pause video when closing
+        modalVideo.currentTime = 0; // Reset to start
+        modal.style.display = 'none';
+    }
+
+    // Function to change video (navigate left or right)
+    function changeVideo(direction) {
+        const modalVideo = document.getElementById('modalVideo');
+        
+        // Pause current video before switching
+        modalVideo.pause();
+        modalVideo.currentTime = 0;
+
+        // Update index
+        currentVideoIndex += direction;
+        if (currentVideoIndex < 0) {
+            currentVideoIndex = portfolioVideos.length - 1;  // Loop to last video
+        } else if (currentVideoIndex >= portfolioVideos.length) {
+            currentVideoIndex = 0;  // Loop to first video
+        }
+
+        // Load new video
+        const videoInfo = portfolioVideos[currentVideoIndex];
+        modalVideo.src = videoInfo.src;
+        modalVideo.poster = videoInfo.poster;
+        modalVideo.muted = false;
+        modalVideo.play();
+    }
+
+    // Attach click event to portfolio video thumbnails
+    document.querySelectorAll('.work video').forEach((video, index) => {
+        video.addEventListener('click', () => openVideoModal(index));
+        video.muted = true; // Mute videos on the main page
+    });
 </script>
 
 <script>

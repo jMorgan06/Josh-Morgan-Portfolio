@@ -250,7 +250,7 @@ nav ul li a:hover::after{
 }
 
 /* Modal (Image Viewer) */
-.modal {
+.imageModal {
     display: none; /* Hidden by default */
     position: fixed;
     z-index: 3000;
@@ -263,7 +263,7 @@ nav ul li a:hover::after{
     padding-top: 60px;
 }
 
-.modal-content {
+.image-modal-content {
     position: relative;
     margin: auto;
     display: flex;
@@ -271,6 +271,28 @@ nav ul li a:hover::after{
     justify-content: center;
     max-width: 90%;
     max-height: 80%;
+}
+
+.videoModal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    text-align: center;
+}
+
+.video-modal-content {
+    display: inline-block;
+    max-width: 90vw;
+    max-height: 90vh;
+    margin: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #modalImage {
