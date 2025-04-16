@@ -189,7 +189,7 @@
     <span class="close" onclick="closeVideoModal()">&times;</span>
     <div class="video-modal-content">
         <div class="video-modal-content-container">
-            <video id="modalVideo" controls class="modal-video"></video>
+            <video id="modalVideo" controls class="modal-video" loop></video>
         </div>
 
         <div class="modal-description-all">
@@ -510,28 +510,29 @@ document.querySelectorAll('.work img').forEach((image, index) => {
     // Function to open the modal with a video
     function openVideoModal(index) {
         currentVideoIndex = index;
-    const modal = document.getElementById('videoViewer');
-    const modalVideo = document.getElementById('modalVideo');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDescription = document.getElementById('modalDescription');
-    const videoInfo = portfolioVideos[currentVideoIndex];
+        const modal = document.getElementById('videoViewer');
+        const modalVideo = document.getElementById('modalVideo');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const videoInfo = portfolioVideos[currentVideoIndex];
 
-    // Set video and text
-    modal.style.display = 'block';
-    modalVideo.src = videoInfo.src;
-    modalVideo.muted = false;
-    modalTitle.textContent = videoInfo.title;
-    modalDescription.textContent = videoInfo.description;
+        // Set video and text
+        modal.style.display = 'block';
+        modalVideo.src = videoInfo.src;
+        modalVideo.muted = false;
+        modalVideo.loop = true;
+        modalTitle.textContent = videoInfo.title;
+        modalDescription.textContent = videoInfo.description;
 
-    // Dynamic sizing (from previous example)
-    modalVideo.onloadedmetadata = function() {
-        const maxWidth = window.innerWidth * 0.7; // 70% of screen (video only)
-        const maxHeight = window.innerHeight * 0.9;
-        // ... (rest of sizing logic)
-    };
+        // Dynamic sizing (from previous example)
+        modalVideo.onloadedmetadata = function() {
+            const maxWidth = window.innerWidth * 0.7; // 70% of screen (video only)
+            const maxHeight = window.innerHeight * 0.9;
+            // ... (rest of sizing logic)
+        };
 
-    modalVideo.play();
-}
+        modalVideo.play();
+    }
 
     // Function to close the modal
     function closeVideoModal() {
@@ -545,32 +546,33 @@ document.querySelectorAll('.work img').forEach((image, index) => {
 
     // Function to change video (navigate left or right)
     function changeVideo(direction) {
-    const modalVideo = document.getElementById('modalVideo');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalDescription = document.getElementById('modalDescription');
-    
-    // Pause current video
-    modalVideo.pause();
-    modalVideo.currentTime = 0;
+        const modalVideo = document.getElementById('modalVideo');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        
+        // Pause current video
+        modalVideo.pause();
+        modalVideo.currentTime = 0;
 
-    // Update index (with looping)
-    currentVideoIndex += direction;
-    if (currentVideoIndex < 0) {
-        currentVideoIndex = portfolioVideos.length - 1; // Loop to end
-    } else if (currentVideoIndex >= portfolioVideos.length) {
-        currentVideoIndex = 0; // Loop to start
+        // Update index (with looping)
+        currentVideoIndex += direction;
+        if (currentVideoIndex < 0) {
+            currentVideoIndex = portfolioVideos.length - 1; // Loop to end
+        } else if (currentVideoIndex >= portfolioVideos.length) {
+            currentVideoIndex = 0; // Loop to start
+        }
+
+        // Load new video and text
+        const videoInfo = portfolioVideos[currentVideoIndex];
+        modalVideo.src = videoInfo.src;
+        modalTitle.textContent = videoInfo.title;
+        modalDescription.textContent = videoInfo.description;
+        modalVideo.loop = true
+
+        // Unmute and play
+        modalVideo.muted = false;
+        modalVideo.play();
     }
-
-    // Load new video and text
-    const videoInfo = portfolioVideos[currentVideoIndex];
-    modalVideo.src = videoInfo.src;
-    modalTitle.textContent = videoInfo.title;
-    modalDescription.textContent = videoInfo.description;
-
-    // Unmute and play
-    modalVideo.muted = false;
-    modalVideo.play();
-}
 
     // Attach click event to portfolio video thumbnails
     document.querySelectorAll('.work video').forEach((video, index) => {
