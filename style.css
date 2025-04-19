@@ -782,7 +782,7 @@ video::-webkit-media-controls {
     object-fit: cover;
     border-radius: 10px;
     display: block;
-    filter: invert(var(--white));
+    /*filter: invert(var(--white));*/
 }
 
 /* ------------contact--------- */
