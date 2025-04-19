@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Josh Morgan Portfolio - Porsche 911 Gt3 Rs</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/9fd4bdfe40.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="header-secondary">
+            <div class="container">
+                <nav>
+                    <a href="index.html"><img src="Images/logo6.webp" class="logo"></a>
+                    <ul id="sidemenu">
+                        <li><a href="index.html" onclick="closemenu()">Home</a></li>
+                        <li><a href="about.html" onclick="closemenu()">About</a></li>
+                        <li><a href="contact.html" onclick="closemenu()">Contact Me</a></li>
+                        <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+                    </ul>
+                    <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+                </nav>
+                <div class="header-text-secondary">
+                    <img src="Images/Porsche_911_2.webp" alt="Background" class="back-image">
+                    <h1>Porsche 911 Gt3 Rs</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio Section (Images)-->
+        <div id="portfolio-secondary">
+            <div class="portfolio-container">
+                <div class="work-section">
+                    <div class="work-list">
+                        <!-- Portfolio items -->
+                        <div class="work">
+                            <img src="Images/Porsche_911_1.webp" data-index="0">
+                        </div>
+                        <div class="work">
+                            <img src="Images/Porsche_911_3.webp" data-index="1">
+                        </div>
+                        <div class="work">
+                            <img src="Images/Porsche Poster.webp" data-index="2">
+                        </div>
+                        <!-- Add more items here as needed -->
+                    </div>
+                    <!-- Portfolio Section (Videos) -->
+                    <div id="portfolio">
+                        <div class="portfolio-container">
+                            <!-- <h1 class="sub-title">My Portfolio</h1> -->
+                            <div class="work-list-video">
+                                <!-- Portfolio items -->
+                                <div class="work">
+                                    <video data-index="0" muted autoplay loop>
+                                        <source src="Videos/Porsche 911 Gt3 Rs IG Video.webm" type="video/webm">
+                                    </video>
+                                    <div class="layer">
+                                        <h3>Play Video</h3>
+                                    </div>
+                                </div>
+                                <!-- Add more items here as needed -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="portfolio-description">
+                    <p><strong>Date Completed:</strong> November 12th, 2024</p>
+                    <p2></strong>Rendering and animations tests I had done with a Porsche 911 Gt3 Rs model I got from Frederico Cuomo on TurboSquid</p2>
+                    
+                    <div class="responsible-section">
+                        <h4>Responsible For</h4>
+                        <ul>
+                            <li>Lighting</li>
+                            <li>Animation</li>
+                            <li>Post-Production</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Image Viewer -->
+        <div id="imageViewer" class="imageModal">
+            <span class="close" onclick="closeImageModal()">&times;</span>
+            <div class="image-modal-content">
+                <div class="modal-content-container">
+                    <img id="modalImage" controls class="modal-image"></img>
+                </div>
+                
+                <div class="modal-description-all">
+                    <h2 id="modalTitleImage" class="modal-title"></h2>
+                    <p class="responsible-label">Responsible for:</p>
+                    <p id="modalDescriptionImage" class="modal-description"></p>
+                </div>
+            </div>
+            <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+            <button class="next" onclick="changeImage(1)">&#10095;</button>
+        </div>
+
+        <!-- Modal Video Viewer -->
+        <div id="videoViewer" class="videoModal">
+            <span class="close" onclick="closeVideoModal()">&times;</span>
+            <div class="video-modal-content">
+                <div class="modal-content-container">
+                    <video id="modalVideo" controls class="modal-video" loop></video>
+                </div>
+
+                <div class="modal-description-all">
+                    <h2 id="modalTitleVideo" class="modal-title"></h2>
+                    <p class="responsible-label">Responsible for:</p>
+                    <p id="modalDescriptionVideo" class="modal-description"></p>
+                </div>
+            </div>
+            <button class="prev" onclick="changeVideo(-1)">&#10094;</button>
+            <button class="next" onclick="changeVideo(1)">&#10095;</button>
+        </div>
+
+        <div id="contact">
+            <div class="container">
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/veadovisuals/"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/josh-morgan-b00447233/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://jdmorgan.artstation.com/"><i class="fa-brands fa-artstation"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var tablinks = document.getElementsByClassName("tab-links");
+            var tabcontents = document.getElementsByClassName("tab-contents");
+
+            function opentab(tabname){
+                for(tablink of tablinks){
+                    tablink.classList.remove("active-link");
+                }
+
+                for(tabcontent of tabcontents){
+                    tabcontent.classList.remove("active-tab");
+                }
+
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabname).classList.add("active-tab");
+            }
+        </script>
+
+        <script>
+            var sidemenu = document.getElementById("sidemenu");
+
+            function openmenu(){
+                sidemenu.style.right = "0";
+            }
+
+            function closemenu(){
+                sidemenu.style.right = "-200px";
+            }
+        </script>
+
+        <script>
+        window.addEventListener('scroll', function() {
+            var video = document.querySelector('.back-video'); // Get the .back-video element
+            var scrollPosition = window.scrollY; // Get the scroll position
+            var windowHeight = window.innerHeight; // Get the viewport height
+            var documentHeight = document.documentElement.scrollHeight; // Get the total document height
+
+            // Calculate the percentage of how far you've scrolled down
+            var scrollPercentage = scrollPosition / (documentHeight - windowHeight);
+
+            // Set the opacity: as you scroll down, opacity will decrease to 0
+            video.style.opacity = 1 - (scrollPercentage * 10); // Opacity decreases as you scroll down
+        });
+
+        </script>
+
+        <script>
+            // Set the scroll threshold (in pixels)
+        const scrollThreshold = 150; // Change this value to your desired threshold
+
+        // Get the nav element
+        const nav = document.querySelector('nav');
+
+        // Listen for the scroll event
+        window.addEventListener('scroll', () => {
+            // Check if the page has been scrolled beyond the threshold
+            if (window.scrollY > scrollThreshold) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        </script>
+
+        <script>
+            // Store all images in an array
+        const portfolioImages = [
+            {
+                src: "Images/Porsche_911_1.webp",
+                title: "Porsche 911 Gt3 Rs",
+                description: "Lighting, Animation, Post-Production"
+            },
+
+            {
+                src: "Images/Porsche_911_3.webp",
+                title: "Porsche 911 Gt3 Rs",
+                description: "Lighting, Animation, Post-Production"
+            },
+
+            {
+                src: "Images/Porsche Poster.webp",
+                title: "Porsche 911 Gt3 Rs",
+                description: "Lighting, Animation, Post-Production"
+            },
+            // Add more image paths as needed
+        ];
+
+        let currentImageIndex = -1;  // Track the index of the current image
+
+        // Function to open the modal
+        function openImageModal(index) {
+            currentImageIndex = index; // Set the current image index
+            const modal = document.getElementById('imageViewer');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitleImage');
+            const modalDescription = document.getElementById('modalDescriptionImage')
+            const imageInfo = portfolioImages[currentImageIndex];
+
+            modal.style.display = 'block';
+            modalImage.src = imageInfo.src;
+            modalTitle.textContent = imageInfo.title
+            modalDescription.textContent = imageInfo.description
+
+            modalImage.onloadedmetadata = function() {
+                const maxWidth = window.innerHeight * 0.7;
+                const maxHeight = window.innerHeight * 0.9;
+            }
+        }
+
+        // Function to close the modal
+        function closeImageModal() {
+            const modal = document.getElementById('imageViewer');
+            modal.style.display = 'none';
+        }
+
+        // Function to change image (navigate left or right)
+        function changeImage(direction) {
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitleImage');
+            const modalDescription = document.getElementById('modalDescriptionImage');
+
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = portfolioImages.length - 1;  // Loop to the last image
+            } else if (currentImageIndex >= portfolioImages.length) {
+                currentImageIndex = 0;  // Loop to the first image
+            }
+
+            const imageInfo = portfolioImages[currentImageIndex];
+            modalImage.src = imageInfo.src;
+            modalTitle.textContent = imageInfo.title;
+            modalDescription.textContent = imageInfo.description;
+        }
+
+        // Attach click event to portfolio images
+        document.querySelectorAll('.work img').forEach((image, index) => {
+            image.addEventListener('click', () => openImageModal(index));
+        });
+        </script>
+
+        <script>
+            // Store all videos in an array (replace with your video paths)
+            const portfolioVideos = [
+
+                { 
+                    src: "Videos/Porsche 911 Gt3 Rs IG Video.webm", 
+                    title: "Porsche 911 Gt3 Rs", 
+                    description: "Lighting, Animation, Post-Production"
+                },
+
+                // Add more videos as needed
+            ];
+
+            let currentVideoIndex = -1;  // Track the index of the current video
+
+            // Function to open the modal with a video
+            function openVideoModal(index) {
+                currentVideoIndex = index;
+                const modal = document.getElementById('videoViewer');
+                const modalVideo = document.getElementById('modalVideo');
+                const modalTitle = document.getElementById('modalTitleVideo');
+                const modalDescription = document.getElementById('modalDescriptionVideo');
+                const videoInfo = portfolioVideos[currentVideoIndex];
+
+                // Set video and text
+                modal.style.display = 'block';
+                modalVideo.src = videoInfo.src;
+                modalVideo.muted = false;
+                modalVideo.loop = true;
+                modalTitle.textContent = videoInfo.title;
+                modalDescription.textContent = videoInfo.description;
+
+                // Dynamic sizing (from previous example)
+                modalVideo.onloadedmetadata = function() {
+                    const maxWidth = window.innerWidth * 0.7; // 70% of screen (video only)
+                    const maxHeight = window.innerHeight * 0.9;
+                    // ... (rest of sizing logic)
+                };
+
+                modalVideo.play();
+            }
+
+            // Function to close the modal
+            function closeVideoModal() {
+                const modal = document.getElementById('videoViewer');
+                const modalVideo = document.getElementById('modalVideo');
+                
+                modalVideo.pause(); // Pause video when closing
+                modalVideo.currentTime = 0; // Reset to start
+                modal.style.display = 'none';
+            }
+
+            // Function to change video (navigate left or right)
+            function changeVideo(direction) {
+                const modalVideo = document.getElementById('modalVideo');
+                const modalTitle = document.getElementById('modalTitleVideo');
+                const modalDescription = document.getElementById('modalDescriptionVideo');
+                
+                // Pause current video
+                modalVideo.pause();
+                modalVideo.currentTime = 0;
+
+                // Update index (with looping)
+                currentVideoIndex += direction;
+                if (currentVideoIndex < 0) {
+                    currentVideoIndex = portfolioVideos.length - 1; // Loop to end
+                } else if (currentVideoIndex >= portfolioVideos.length) {
+                    currentVideoIndex = 0; // Loop to start
+                }
+
+                // Load new video and text
+                const videoInfo = portfolioVideos[currentVideoIndex];
+                modalVideo.src = videoInfo.src;
+                modalTitle.textContent = videoInfo.title;
+                modalDescription.textContent = videoInfo.description;
+                modalVideo.loop = true
+
+                // Unmute and play
+                modalVideo.muted = false;
+                modalVideo.play();
+            }
+
+            // Attach click event to portfolio video thumbnails
+            document.querySelectorAll('.work video').forEach((video, index) => {
+                video.addEventListener('click', () => openVideoModal(index));
+                video.muted = true; // Mute videos on the main page
+            });
+        </script>
+    </body>
+</html>
