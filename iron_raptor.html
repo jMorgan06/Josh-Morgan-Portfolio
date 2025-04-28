@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Josh Morgan Portfolio - Mustang GT</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/9fd4bdfe40.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="header-secondary">
+            <div class="container">
+                <nav>
+                    <a href="index.html"><img src="Images/logo6.webp" class="logo"></a>
+                    <ul id="sidemenu">
+                        <li><a href="index.html" onclick="closemenu()">Home</a></li>
+                        <li><a href="about.html" onclick="closemenu()">About</a></li>
+                        <li><a href="contact.html" onclick="closemenu()">Contact Me</a></li>
+                        <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
+                    </ul>
+                    <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+                </nav>
+                <div class="header-text-secondary">
+                    <img src="Images/Iron_Raptor_1.webp" alt="Background" class="back-image">
+                    <h1>Iron Raptor</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio Section (Images)-->
+        <div id="portfolio-secondary">
+            <div class="portfolio-container">
+                <div class="work-section">
+                    <div class="work-list">
+                        <!-- Portfolio items -->
+                        <div class="work">
+                            <img src="Images/Iron_Raptor_1.webp" data-index="0">
+                        </div>
+                        <div class="work">
+                            <img src="Images/Iron_Raptor_2.webp" data-index="1">
+                        </div>
+                        <div class="work">
+                            <img src="Images/Iron_Raptor_3.webp" data-index="2">
+                        </div>
+                        <div class="work">
+                            <img src="Images/Iron_Raptor_4.webp" data-index="3">
+                        </div>
+                        <!-- Add more items here as needed -->
+                    </div>
+                </div>
+        
+                <div class="portfolio-description">
+                    <p><strong>Date Completed:</strong> April 27th, 2025</p>
+                    <p2></strong>The Iron Raptor. A concept bike designed by Wes Sly on ArtStation that I modeled and rendered in Blender. </p2>
+                    
+                    <div class="responsible-section">
+                        <h4>Responsible For</h4>
+                        <ul>
+                            <li>Iron Raptor Model</li>
+                            <li>Textures</li>
+                            <li>Set Dress</li>
+                            <li>Lighting</li>
+                            <li>VFX</li>
+                        </ul>
+                    </div>
+
+                    <div class="itch-page-section">
+                        <h4>Original Design by Wes Sly:</h4>
+                        <a href="https://www.artstation.com/artwork/bLzrd" target="_blank">https://www.artstation.com/artwork/bLzrd</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Image Viewer -->
+        <div id="imageViewer" class="imageModal">
+            <span class="close" onclick="closeImageModal()">&times;</span>
+            <div class="image-modal-content">
+                <div class="modal-content-container">
+                    <img id="modalImage" controls class="modal-image"></img>
+                </div>
+                
+                <div class="modal-description-all">
+                    <h2 id="modalTitleImage" class="modal-title"></h2>
+                    <p class="responsible-label">Responsible for:</p>
+                    <p id="modalDescriptionImage" class="modal-description"></p>
+                </div>
+            </div>
+            <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+            <button class="next" onclick="changeImage(1)">&#10095;</button>
+        </div>
+
+        <div id="contact">
+            <div class="container">
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/veadovisuals/"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/josh-morgan-b00447233/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://jdmorgan.artstation.com/"><i class="fa-brands fa-artstation"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var tablinks = document.getElementsByClassName("tab-links");
+            var tabcontents = document.getElementsByClassName("tab-contents");
+
+            function opentab(tabname){
+                for(tablink of tablinks){
+                    tablink.classList.remove("active-link");
+                }
+
+                for(tabcontent of tabcontents){
+                    tabcontent.classList.remove("active-tab");
+                }
+
+                event.currentTarget.classList.add("active-link");
+                document.getElementById(tabname).classList.add("active-tab");
+            }
+        </script>
+
+        <script>
+            var sidemenu = document.getElementById("sidemenu");
+
+            function openmenu(){
+                sidemenu.style.right = "0";
+            }
+
+            function closemenu(){
+                sidemenu.style.right = "-200px";
+            }
+        </script>
+
+        <script>
+        window.addEventListener('scroll', function() {
+            var video = document.querySelector('.back-video'); // Get the .back-video element
+            var scrollPosition = window.scrollY; // Get the scroll position
+            var windowHeight = window.innerHeight; // Get the viewport height
+            var documentHeight = document.documentElement.scrollHeight; // Get the total document height
+
+            // Calculate the percentage of how far you've scrolled down
+            var scrollPercentage = scrollPosition / (documentHeight - windowHeight);
+
+            // Set the opacity: as you scroll down, opacity will decrease to 0
+            video.style.opacity = 1 - (scrollPercentage * 10); // Opacity decreases as you scroll down
+        });
+
+        </script>
+
+        <script>
+            // Set the scroll threshold (in pixels)
+        const scrollThreshold = 150; // Change this value to your desired threshold
+
+        // Get the nav element
+        const nav = document.querySelector('nav');
+
+        // Listen for the scroll event
+        window.addEventListener('scroll', () => {
+            // Check if the page has been scrolled beyond the threshold
+            if (window.scrollY > scrollThreshold) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        </script>
+
+        <script>
+            // Store all images in an array
+        const portfolioImages = [
+            {
+                src: "Images/Iron_Raptor_1.webp",
+                title: "Iron Raptor",
+                description: "Iron Raptor Model, Textures, Set Dress, Lighting, VFX"
+            },
+
+            {
+                src: "Images/Iron_Raptor_2.webp",
+                title: "Iron Raptor",
+                description: "Iron Raptor Model, Textures, Set Dress, Lighting, VFX"
+            },
+
+            {
+                src: "Images/Iron_Raptor_3.webp",
+                title: "Iron Raptor",
+                description: "Iron Raptor Model, Textures, Set Dress, Lighting, VFX"
+            },
+
+            {
+                src: "Images/Iron_Raptor_4.webp",
+                title: "Iron Raptor",
+                description: "Iron Raptor Model, Textures, Set Dress, Lighting, VFX"
+            },
+            // Add more image paths as needed
+        ];
+
+        let currentImageIndex = -1;  // Track the index of the current image
+
+        // Function to open the modal
+        function openImageModal(index) {
+            currentImageIndex = index; // Set the current image index
+            const modal = document.getElementById('imageViewer');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitleImage');
+            const modalDescription = document.getElementById('modalDescriptionImage')
+            const imageInfo = portfolioImages[currentImageIndex];
+
+            modal.style.display = 'block';
+            modalImage.src = imageInfo.src;
+            modalTitle.textContent = imageInfo.title
+            modalDescription.textContent = imageInfo.description
+
+            modalImage.onloadedmetadata = function() {
+                const maxWidth = window.innerHeight * 0.7;
+                const maxHeight = window.innerHeight * 0.9;
+            }
+        }
+
+        // Function to close the modal
+        function closeImageModal() {
+            const modal = document.getElementById('imageViewer');
+            modal.style.display = 'none';
+        }
+
+        // Function to change image (navigate left or right)
+        function changeImage(direction) {
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitleImage');
+            const modalDescription = document.getElementById('modalDescriptionImage');
+
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = portfolioImages.length - 1;  // Loop to the last image
+            } else if (currentImageIndex >= portfolioImages.length) {
+                currentImageIndex = 0;  // Loop to the first image
+            }
+
+            const imageInfo = portfolioImages[currentImageIndex];
+            modalImage.src = imageInfo.src;
+            modalTitle.textContent = imageInfo.title;
+            modalDescription.textContent = imageInfo.description;
+        }
+
+        // Attach click event to portfolio images
+        document.querySelectorAll('.work img').forEach((image, index) => {
+            image.addEventListener('click', () => openImageModal(index));
+        });
+        </script>
+    </body>
+</html>
