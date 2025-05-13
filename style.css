@@ -156,6 +156,7 @@ nav ul li a:hover::after{
 .header-text{
     margin-top: 25%;
     font-size: 30px;
+    text-shadow: 3px 2px 0px rgba(0, 0, 0, 1);
 }
 
 .header-text-secondary{
@@ -168,10 +169,12 @@ nav ul li a:hover::after{
 .header-text h1{
     font-size: 60px;
     margin-top: 20px;
+    text-shadow: 3px 2px 0px rgba(0, 0, 0, 1);
 }
 
 .header-text h1 span{
     color: var(--highlight-color);
+    text-shadow: 3px 2px 0px rgba(0, 0, 0, 1);
 }
 
 /* -------Showcase Reel--------*/
